@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2016-04-06T12:25:20Z</date>
+    <date>2016-04-12T06:41:48Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -22,10 +22,16 @@
                     <name>StarWind SAN Devices</name>
                 </application>
                 <application>
-                    <name>StarWind SAN Server</name>
+                    <name>StarWind SAN iSCSI Targets</name>
                 </application>
                 <application>
-                    <name>StarWind SAN Targets</name>
+                    <name>StarWind SAN LSFS disks</name>
+                </application>
+                <application>
+                    <name>StarWind SAN Network interfaces</name>
+                </application>
+                <application>
+                    <name>StarWind SAN Server</name>
                 </application>
             </applications>
             <items>
@@ -149,6 +155,496 @@
                     <privatekey/>
                     <port/>
                     <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: expiration date</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.ExpirationDate]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>License expiration date in format '2012-10-17'.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: licensed plugins</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.LicensedPlugins]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>All licensed plugins</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: maximum servers per license</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.ServersPerLicense]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>pcs</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Maximum number of servers per license.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: maximum storage capacity.</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.MaxStorageCapacity]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Maximum storage capacity.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: number of days left to the trial license key expiration</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.TrialDaysLeft]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>days</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Number of days left to the date of the trial license key expiration.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: organization name</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.Organization]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Organization name</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: plugins without storage capacity limitation.</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.UnlimitedPlugins]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>All plugins which have no storage capacity limitation.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: product name</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.ProductName]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Product name.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: servers count which have already use this license</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.ActiveLicenseCount]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Servers count which have already use this license.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: type</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.LicenseType]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>pcs</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>License type:&#13;
+&#13;
+  STARWIND_LICENSE_NONE = -3;&#13;
+  STARWIND_LICENSE_INVALID = -2;&#13;
+  STARWIND_LICENSE_FREE = 0;&#13;
+  STARWIND_LICENSE_SERVER = 1;&#13;
+  STARWIND_LICENSE_VTL = 2;&#13;
+  STARWIND_LICENSE_ENTERPRISE_CDP = 3;&#13;
+  STARWIND_LICENSE_ENTERPRISE_MIR_REP = 4;&#13;
+  STARWIND_LICENSE_ENTERPRISE_HA = 5;&#13;
+  STARWIND_LICENSE_ENTERPRISE_HA_UNLIM = 6;&#13;
+  STARWIND_LICENSE_CUSTOM = 7;&#13;
+  STARWIND_LICENSE_UNLIMITED = 8;&#13;
+  STARWIND_LICENSE_NATIVE_SAN_FREE = 9;&#13;
+  STARWIND_LICENSE_NATIVE_SAN_HA = 10;&#13;
+  STARWIND_LICENSE_TRIAL = 20;</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>License: user name</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,LicenseInfo.Userame]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>User name&#13;
+&#13;
+LicenseInfo.___Userame___ - misstyped property name in StarWindX COM-object</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -287,15 +783,354 @@
                     <valuemap/>
                     <logtimefmt/>
                 </item>
+                <item>
+                    <name>Server information</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Min,Server,ServerInformation]</key>
+                    <delay>10800</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>StarWind product information</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Total consigned devices сache size</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>1</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Sum,Device,CacheSize]</key>
+                    <delay>60</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>B</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1048576</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Total devices count</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Count,Device]</key>
+                    <delay>600</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>pcs</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Total targets count</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>swm[Count,Target]</key>
+                    <delay>600</delay>
+                    <history>7</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>pcs</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>StarWind SAN Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
             </items>
             <discovery_rules>
+                <discovery_rule>
+                    <name>Active network interfaces</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>swm[Discovery,ActiveInterface]</key>
+                    <delay>600</delay>
+                    <status>1</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>0</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>[{#IPADDRESS}] Network interface ICMP loss</name>
+                            <type>3</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>icmppingloss[{#IPADDRESS}]</key>
+                            <delay>60</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN Network interfaces</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>[{#IPADDRESS}] Network interface ICMP ping</name>
+                            <type>3</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>icmpping[{#IPADDRESS}]</key>
+                            <delay>60</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>s</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN Network interfaces</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>[{#IPADDRESS}] Network interface ICMP response time</name>
+                            <type>3</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>icmppingsec[{#IPADDRESS}]</key>
+                            <delay>60</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>s</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN Network interfaces</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes/>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                </discovery_rule>
                 <discovery_rule>
                     <name>Devices</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>swm[Discovery,Device]</key>
-                    <delay>60</delay>
+                    <delay>600</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -323,55 +1158,12 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Device {#DEVICEID} name</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>swm[Get,Device,Name,{#DEVICEID}]</key>
-                            <delay>60</delay>
-                            <history>7</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>StarWind SAN Devices</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
                             <name>[{#NAME}] Read bandwidth (1min average)</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.ReadBandwidth,{#DEVICEID},1]</key>
+                            <key>swm[Avg,Device,PerformanceData.ReadBandwidth,{#DEVICEID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -414,8 +1206,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Max,Device,PerformanceData.ReadBandwidth,{#DEVICEID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Max,Device,PerformanceData.ReadBandwidth,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -457,8 +1249,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Min,Device,PerformanceData.ReadBandwidth,{#DEVICEID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Min,Device,PerformanceData.ReadBandwidth,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -500,7 +1292,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.TotalBandwidth,{#DEVICEID},1]</key>
+                            <key>swm[Avg,Device,PerformanceData.TotalBandwidth,{#DEVICEID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -543,9 +1335,9 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Max,Device,PerformanceData.TotalBandwidth,{#DEVICEID},60]</key>
-                            <delay>60</delay>
-                            <history>7</history>
+                            <key>swm[Max,Device,PerformanceData.TotalBandwidth,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
+                            <history>1</history>
                             <trends>90</trends>
                             <status>0</status>
                             <value_type>3</value_type>
@@ -586,9 +1378,9 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Min,Device,PerformanceData.TotalBandwidth,{#DEVICEID},60]</key>
-                            <delay>60</delay>
-                            <history>7</history>
+                            <key>swm[Min,Device,PerformanceData.TotalBandwidth,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
+                            <history>1</history>
                             <trends>90</trends>
                             <status>0</status>
                             <value_type>3</value_type>
@@ -629,7 +1421,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},1]</key>
+                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -672,98 +1464,12 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},5]</key>
+                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},5,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
                             <value_type>0</value_type>
-                            <allowed_hosts/>
-                            <units>ops</units>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>StarWind SAN Devices</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>[{#NAME}] Total IOPs (5min maximum)</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>swm[Max,Device,PerformanceData.TotalIops,{#DEVICEID},5]</key>
-                            <delay>60</delay>
-                            <history>7</history>
-                            <trends>90</trends>
-                            <status>1</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units>ops</units>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>StarWind SAN Devices</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>[{#NAME}] Total IOPs (5min minimum)</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>swm[Min,Device,PerformanceData.TotalIops,{#DEVICEID},5]</key>
-                            <delay>60</delay>
-                            <history>7</history>
-                            <trends>90</trends>
-                            <status>1</status>
-                            <value_type>3</value_type>
                             <allowed_hosts/>
                             <units>ops</units>
                             <delta>0</delta>
@@ -801,7 +1507,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},15]</key>
+                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},15,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -839,98 +1545,12 @@
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>[{#NAME}] Total IOPs (15min maximum)</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>swm[Max,Device,PerformanceData.TotalIops,{#DEVICEID},15]</key>
-                            <delay>60</delay>
-                            <history>7</history>
-                            <trends>90</trends>
-                            <status>1</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units>ops</units>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>StarWind SAN Devices</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>[{#NAME}] Total IOPs (15min minimum)</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>swm[Min,Device,PerformanceData.TotalIops,{#DEVICEID},15]</key>
-                            <delay>60</delay>
-                            <history>7</history>
-                            <trends>90</trends>
-                            <status>1</status>
-                            <value_type>3</value_type>
-                            <allowed_hosts/>
-                            <units>ops</units>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>StarWind SAN Devices</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                        </item_prototype>
-                        <item_prototype>
                             <name>[{#NAME}] Total IOPs (60min average)</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
+                            <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -973,8 +1593,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Max,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Max,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1016,8 +1636,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Min,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Min,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1059,7 +1679,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Device,PerformanceData.WriteBandwidth,{#DEVICEID},1]</key>
+                            <key>swm[Avg,Device,PerformanceData.WriteBandwidth,{#DEVICEID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1102,8 +1722,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Max,Device,PerformanceData.WriteBandwidth,{#DEVICEID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Max,Device,PerformanceData.WriteBandwidth,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1145,8 +1765,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Min,Device,PerformanceData.WriteBandwidth,{#DEVICEID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Min,Device,PerformanceData.WriteBandwidth,{#DEVICEID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1212,7 +1832,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.ReadBandwidth,{#DEVICEID},1]</key>
+                                        <key>swm[Avg,Device,PerformanceData.ReadBandwidth,{#DEVICEID},1,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1224,7 +1844,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.WriteBandwidth,{#DEVICEID},1]</key>
+                                        <key>swm[Avg,Device,PerformanceData.WriteBandwidth,{#DEVICEID},1,0]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -1256,7 +1876,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Min,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
+                                        <key>swm[Min,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1268,7 +1888,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
+                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1280,7 +1900,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Max,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
+                                        <key>swm[Max,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1292,7 +1912,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},1]</key>
+                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},1,0]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -1324,7 +1944,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},15]</key>
+                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},15,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1336,7 +1956,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},1]</key>
+                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},1,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1348,7 +1968,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},60]</key>
+                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -1360,7 +1980,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},15]</key>
+                                        <key>swm[Avg,Device,PerformanceData.TotalIops,{#DEVICEID},15,0]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -1369,12 +1989,12 @@
                     <host_prototypes/>
                 </discovery_rule>
                 <discovery_rule>
-                    <name>Targets</name>
+                    <name>iSCSI Targets</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>swm[Discovery,Target]</key>
-                    <delay>60</delay>
+                    <delay>600</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -1438,7 +2058,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1450,7 +2070,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.ReadBandwidth,{#ID},1]</key>
+                            <key>swm[Avg,Target,PerformanceData.ReadBandwidth,{#ID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1481,7 +2101,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1493,7 +2113,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.ReadBandwidth,{#ID},60]</key>
+                            <key>swm[Avg,Target,PerformanceData.ReadBandwidth,{#ID},60,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1524,7 +2144,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1536,7 +2156,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},1]</key>
+                            <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1567,7 +2187,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1579,7 +2199,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},60]</key>
+                            <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},60,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1610,7 +2230,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1622,8 +2242,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Max,Target,PerformanceData.TotalBandwidth,{#ID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Max,Target,PerformanceData.TotalBandwidth,{#ID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1653,7 +2273,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1665,8 +2285,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Min,Target,PerformanceData.TotalBandwidth,{#ID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Min,Target,PerformanceData.TotalBandwidth,{#ID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1696,7 +2316,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1708,7 +2328,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},1]</key>
+                            <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1739,7 +2359,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1751,7 +2371,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},60]</key>
+                            <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},60,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1782,7 +2402,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1794,8 +2414,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Max,Target,PerformanceData.TotalIops,{#ID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Max,Target,PerformanceData.TotalIops,{#ID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1825,7 +2445,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1837,8 +2457,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Min,Target,PerformanceData.TotalIops,{#ID},60]</key>
-                            <delay>60</delay>
+                            <key>swm[Min,Target,PerformanceData.TotalIops,{#ID},60,0]</key>
+                            <delay>600</delay>
                             <history>7</history>
                             <trends>90</trends>
                             <status>0</status>
@@ -1868,7 +2488,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1880,7 +2500,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.WriteBandwidth,{#ID},1]</key>
+                            <key>swm[Avg,Target,PerformanceData.WriteBandwidth,{#ID},1,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1911,7 +2531,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1923,7 +2543,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>swm[Avg,Target,PerformanceData.WriteBandwidth,{#ID},60]</key>
+                            <key>swm[Avg,Target,PerformanceData.WriteBandwidth,{#ID},60,0]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>90</trends>
@@ -1954,7 +2574,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>StarWind SAN Targets</name>
+                                    <name>StarWind SAN iSCSI Targets</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -1990,7 +2610,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Target,PerformanceData.ReadBandwidth,{#ID},1]</key>
+                                        <key>swm[Avg,Target,PerformanceData.ReadBandwidth,{#ID},1,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2002,7 +2622,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Target,PerformanceData.WriteBandwidth,{#ID},1]</key>
+                                        <key>swm[Avg,Target,PerformanceData.WriteBandwidth,{#ID},1,0]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -2034,7 +2654,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Min,Target,PerformanceData.TotalIops,{#ID},60]</key>
+                                        <key>swm[Min,Target,PerformanceData.TotalIops,{#ID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2046,7 +2666,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},60]</key>
+                                        <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2058,7 +2678,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Max,Target,PerformanceData.TotalIops,{#ID},60]</key>
+                                        <key>swm[Max,Target,PerformanceData.TotalIops,{#ID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2070,7 +2690,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},1]</key>
+                                        <key>swm[Avg,Target,PerformanceData.TotalIops,{#ID},1,0]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -2102,7 +2722,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},60]</key>
+                                        <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2114,7 +2734,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},1]</key>
+                                        <key>swm[Avg,Target,PerformanceData.TotalBandwidth,{#ID},1,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2126,7 +2746,7 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Max,Target,PerformanceData.TotalBandwidth,{#ID},60]</key>
+                                        <key>swm[Max,Target,PerformanceData.TotalBandwidth,{#ID},60,0]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
@@ -2138,12 +2758,229 @@
                                     <type>0</type>
                                     <item>
                                         <host>Template App StarWind SAN Server</host>
-                                        <key>swm[Min,Target,PerformanceData.TotalBandwidth,{#ID},60]</key>
+                                        <key>swm[Min,Target,PerformanceData.TotalBandwidth,{#ID},60,0]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                     </graph_prototypes>
+                    <host_prototypes/>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>LSFS disks</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>swm[Discovery,Device,LSFS]</key>
+                    <delay>600</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions>
+                            <condition>
+                                <macro>{#DEVICETYPE}</macro>
+                                <value>LSFS</value>
+                                <operator>8</operator>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <lifetime>0</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>[{#NAME}] Disk allocated physical size</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>swm[Get,Device,AllocatedPhysicalSize,{#DEVICEID}]</key>
+                            <delay>60</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>B</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>Allocated physical size.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN LSFS disks</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>[{#NAME}] Disk deduplication ratio</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>swm[Get,Device,DeduplicationRatio,{#DEVICEID},,0]</key>
+                            <delay>60</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN LSFS disks</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>[{#NAME}] Disk fragmented percent</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>swm[Get,Device,DeviceFragmentedPercent,{#DEVICEID}]</key>
+                            <delay>600</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN LSFS disks</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>[{#NAME}] Disk maximum size</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>swm[Get,Device,Size,{#DEVICEID}]</key>
+                            <delay>3600</delay>
+                            <history>7</history>
+                            <trends>90</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>B</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>StarWind SAN LSFS disks</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes/>
+                    <graph_prototypes/>
                     <host_prototypes/>
                 </discovery_rule>
             </discovery_rules>

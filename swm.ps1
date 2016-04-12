@@ -6,10 +6,10 @@
         Return Starwind SAN Server's metrics value, calculate its, make LLD-JSON for Zabbix
 
     .NOTES  
-        Version: 0.9.0
+        Version: 1.0.0
         Name: Starwind SAN Server Miner
         Author: zbx.sadman@gmail.com
-        DateCreated: 06APR2016
+        DateCreated: 12APR2016
         Testing environment: Windows Server 2012 R2, StarWind 8, PowerShell 4
 
     .LINK  
@@ -30,21 +30,23 @@
         Define rule to make collection:
             Server  - Starwind SAN Server info;
             Target  - Starwind iSCSI target;
-            Device  - Starwind iSCSI Device;
+            Device  - Starwind Device;
+            ActiveInterface - network interfaces of iSCSI portals.
+
 
     .PARAMETER Key
         Define "path" to collection item's metric 
 
         Virtual keys for 'Server' object:
-            PerformanceData.CPU -
-            PerformanceData.RAM -
+            PerformanceData.CPU - CPU usage percentage;
+            PerformanceData.RAM - RAM usage percentage.
 
         Virtual keys for 'Target' object:
             Initiator - Number of connected initiators.
 
         Virtual keys for 'Server', 'Target', 'Device' object:
-            PerformanceData.ReadBandwidth, PerformanceData.WriteBandwidth, PerformanceData.TotalBandwidth - 
-            PerformanceData.TotalIOPs -
+            PerformanceData.ReadBandwidth, PerformanceData.WriteBandwidth, PerformanceData.TotalBandwidth - read/write/total bandwidth in bytes per second;
+            PerformanceData.TotalIOPs - total number of I/O operations per second.
 
     .PARAMETER TimePeriod
         How much minutes contains time period for selecting data for PerformanceData.* virtual key. 
@@ -84,14 +86,13 @@
 
 #>
 
-
 Param (
    [Parameter(Mandatory = $False)] 
-   [ValidateSet('Discovery', 'Get', 'Count', 'Avg', 'Last', 'Max', 'Min')]
+   [ValidateSet('Discovery', 'Get', 'Sum', 'Count', 'Avg', 'Last', 'Max', 'Min')]
    [String]$Action,
 
    [Parameter(Mandatory = $False)]
-   [ValidateSet('Server', 'Target', 'Device')]
+   [ValidateSet('Server', 'Target', 'Device', 'ActiveInterface')]
    [Alias('Object')]
    [String]$ObjectType,
 
@@ -169,9 +170,9 @@ Function PrepareTo-Zabbix {
    Process {
       # Do something with all objects (non-pipelined input case)  
       ForEach ($Object in $InputObject) { 
-         If ($Null -Eq $Object) {
+         If ($Null -Eq $Object -OR (-Not $Object)) {
            # Put empty string or $ErrorCode to output  
-           If ($ErrorCode) { $ErrorCode } Else { "" }
+           If ($ErrorCode) { $ErrorCode } Else { "" } 
            Continue;
          }
          # Need add doublequote around string for other objects when JSON compatible output requested?
@@ -182,7 +183,7 @@ Function PrepareTo-Zabbix {
             Default           { $DoQuote = $True; }
          }
          # Normalize String object
-         $Object = $( If ($JSONCompatible) { $Object.ToString() } else { $Object | Out-String }).Trim();
+         $Object = $( If ($JSONCompatible) { $Object.ToString().Trim() } else { Out-String -InputObject (Format-List -InputObject $Object -Property *) });         
          
          If (!$NoEscape) { 
             ForEach ($Symbol in $EscapedSymbols) { 
@@ -238,7 +239,7 @@ Function Make-JSON {
       # Do something with all objects (non-pipelined input case)  
       ForEach ($Object in $InputObject) {
          # Skip object when its $Null
-         If ($Null -Eq $Object) { Continue; }
+         If ($Null -Eq $Object -OR (-Not $Object)) { Continue; }
 
          If (-Not $itFirstObject) { $Result += ",$CRLF"; }
          $itFirstObject=$False;
@@ -272,7 +273,7 @@ Function Get-Metric {
    Process {
       # Do something with all objects (non-pipelined input case)  
       ForEach ($Object in $InputObject) { 
-        If ($Null -Eq $Object) { Continue; }
+        If ($Null -Eq $Object -OR (-Not $Object)) { Continue; }
         # Expand all metrics related to keys contained in array step by step
         ForEach ($Key in $Keys) {              
            If ($Key) {
@@ -311,11 +312,10 @@ function New-SWServer {
    )
    $StarWindX = New-Object -ComObject StarWindX.StarWindX;
    $Server = $StarWindX.CreateServer($SWHost, $SWPort);
-   $AuthInfo = $Server.AuthentificationInfo;
-   $AuthInfo.Login = $Username;
-   $AuthInfo.Password = $Password;
-   $AuthInfo.IsChap = $False;
-   
+   $Server.AuthentificationInfo.Login = $Username;
+   $Server.AuthentificationInfo.Password = $Password;
+   $Server.AuthentificationInfo.IsChap = $False;
+  
    $Server;
 }
 
@@ -325,8 +325,8 @@ function New-SWServer {
 #    
 ####################################################################################################################################
 
-Write-Verbose "$(Get-Date) Creating COM-object"
-# Connect to local server with default props
+Write-Verbose "$(Get-Date) Creating 'StarWindX' COM-object"
+# Use COM-object's default settings
 $SWServer = New-SWServer;
 
 Write-Verbose "$(Get-Date) Trying to connect to local StarWind Server"
@@ -344,39 +344,27 @@ Catch {
 # split key to subkeys
 $Keys = $Key.Split(".");
 $Now = Get-Date;
-Write-Verbose "$(Get-Date) Creating collection of specified object: '$ObjectType'";
-Switch ($ObjectType) {
-   'Server' { 
-      $Objects = $SWServer; 
-#      Add-Member -Force -InputObject $Objects -MemberType NoteProperty -Name "FullVersion" -Value $Objects.Version.ToString();
-   }
-   'Target' {
-      $Objects = PropertyEqualOrAny -InputObject $SWServer.Targets -Property ID -Value $Id;
-      # Add initiators arrays to target
-      # May be that procedure need to go to separate 'Key'-case block?
-      Write-Verbose "$(Get-Date) Initiators";
-      ForEach ($Target in $Objects) {
-        Add-Member -InputObject $Target -MemberType 'NoteProperty' -Name 'Initiators' -Value @($SWServer.GetInitiators($Target.Id));
-      }
- 
-   }
-   'Device' { 
-      $Objects = PropertyEqualOrAny -InputObject $SWServer.Devices -Property DeviceID -Value $Id;
-   }
-}  
-
+Write-Verbose "$(Get-Date) Creating collection of specified object type: '$ObjectType'";
+$Objects = $(
+   Switch ($ObjectType) {
+      'Server' { $SWServer; }
+      'Target' { PropertyEqualOrAny -InputObject $SWServer.Targets -Property ID -Value $Id; }
+      'Device' { PropertyEqualOrAny -InputObject $SWServer.Devices -Property DeviceID -Value $Id; }
+      'ActiveInterface' { PropertyEqualOrAny -InputObject $SWServer.ActiveInterfaces -Property DeviceID -Value $Id; }
+   }  
+);
 
 #$Objects | fl *;
 #exit;
 
-Write-Verbose "$(Get-Date) Analyzing key";
+Write-Verbose "$(Get-Date) Analyzing key and modifying collection";
 $Objects = $( 
    Switch ($Keys[0]) {
       'Initiator' {
          Write-Verbose "$(Get-Date) 'Initiator' key detected";
          # Non-optimal code. need to rework
          If ('Target' -Eq $ObjectType) {
-            ForEach ($Object in $Objects) { $Object.Initiators; }
+            ForEach ($Target in $Objects) { $SWServer.GetInitiators($Target.Id); }
          } Else {
            $Null;
          }
@@ -387,36 +375,31 @@ $Objects = $(
 
          $PerfCounterType = $(
              If ('CPU' -Eq $Keys[1] -OR 'RAM' -Eq $Keys[1]) {
-               Write-Verbose "$(Get-Date) Do 'CpuAndRam' query";
                [SwPerfCounterType]::CPUandRAM;
              } ElseIf ('WriteBandwidth' -Eq $Keys[1] -OR 'ReadBandwidth' -Eq $Keys[1] -OR 'TotalBandwidth' -Eq $Keys[1]) {
-               Write-Verbose "$(Get-Date) Do 'Bandwidth' query";
                [SwPerfCounterType]::Bandwidth;
              } ElseIf ('TotalIOPs' -Eq $Keys[1]) {
-               Write-Verbose "$(Get-Date) Do 'IOps' query";
                [SwPerfCounterType]::IOPs;
              } Else {
-              #Error   
+               Exit-WithMessage -Message "Wrong PerfomanceDate subkey '$($Keys[1])'" -ErrorCode $ErrorCode;
              }
          );
 
+         # Take PerfomanceData for last hour only
          $PerfTimeInterval = [SwPerfTimeInterval]::LastHour;
+         # If Action is 'Last' - use 0, that processeed for taking only last PerfomanceData record
+         # If $TimePeriod casts to [int] - use its value. Otherwise - use 1 min. 
          $TimePeriod = $( If ('Last' -Eq $Action) { 0 } ElseIf ($TimePeriod -As [Int]) { $TimePeriod } Else { 1 });
          $LastMin = $Now.AddMinutes( 0-$TimePeriod );
-         Write-Verbose "$(Get-Date) Take '$ObjectType's '$Property' PerfData for $TimePeriod mins ($LastMin ... $Now)";
+         Write-Verbose "$(Get-Date) Do '$PerfCounterType' query and take '$ObjectType's PerfData for $TimePeriod mins";
          ForEach ($Object in $Objects) { 
-            If ($Null -Eq $Object) { Continue; }
+            If ($Null -Eq $Object -OR (-Not $Object)) { Continue; }
             Switch ($ObjectType) {
                'Server' { $PerformanceData = $SWServer.QueryServerPerformanceData($PerfCounterType, $PerfTimeInterval); }
                'Target' { $PerformanceData = $SWServer.QueryTargetPerformanceData($PerfCounterType, $Object.Name, $PerfTimeInterval); }
                'Device' { $PerformanceData = $SWServer.QueryDevicePerformanceData($PerfCounterType, $Object.Name, $PerfTimeInterval); }
             }
-            If (0 -Eq $TimePeriod ) {
-               $PerformanceData = $PerformanceData | Select-Object -Last 1
-            } Else {
-               $PerformanceData = $PerformanceData | ? { $_.DateTime -gt $LastMin };
-            }
-            $PerformanceData
+            $PerformanceData | ? { $_.DateTime -gt $LastMin };
          }
          $Keys[0] = '';
       }
@@ -424,78 +407,88 @@ $Objects = $(
    }
 );
 
-
 #$Objects | fl *;
 #exit;
 
-Write-Verbose "$(Get-Date) Collection created, begin processing its with action: '$Action'";
+Write-Verbose "$(Get-Date) Collection created, do processing its with action: '$Action'";
 $Result = $(
-   If (('Discovery' -Ne $Action -OR 'Get' -Ne $Action) -And (-Not $Objects)) { 
-     Write-Verbose "$(Get-Date) No objects in collection - all calculation functions must return 0";
-     0; Break;
-   } 
+   # if no object in collection: 1) JSON must be empty; 2) 'Get' must be able to return ErrorCode
    Switch ($Action) {
       # Discovery given object, make json for zabbix
       'Discovery' {
           Switch ($ObjectType) {
              'Target' { $ObjectProperties = @("ALIAS", "NAME", "ID");  }
              'Device' { $ObjectProperties = @("NAME", "DEVICETYPE", "DEVICEID", "TARGETID", "EXISTS");  }
+             'ActiveInterface' { $ObjectProperties = @("IPADDRESS", "PORT", "MACADDRESS");  }
           }
           Write-Verbose "$(Get-Date) Generating LLD JSON";
           Make-JSON -InputObject $Objects -ObjectProperties $ObjectProperties -Pretty;
       }
       # Get metrics or metric list
       'Get' {
-         If ($Null -Eq $Objects) {
-            Exit-WithMessage -Message "No objects in collection" -ErrorCode $ErrorCode;
-         }
-         If ($Keys) { 
-            Write-Verbose "$(Get-Date) Getting metric related to key: '$Key'";
-            PrepareTo-Zabbix -InputObject (Get-Metric -InputObject $Objects -Keys $Keys) -ErrorCode $ErrorCode;
-         } Else { 
-            Write-Verbose "$(Get-Date) Getting metric list due metric's Key not specified";
-            Out-String -InputObject $Objects;
-         };
+         Write-Verbose "$(Get-Date) Getting metric related to key: '$Key'";
+         PrepareTo-Zabbix -InputObject (Get-Metric -InputObject $Objects -Keys $Keys) -ErrorCode $ErrorCode;
+      }
+      'Sum' {
+         Write-Verbose "$(Get-Date) Sum objects";  
+         $Result = 0;
+         ForEach ($Object in $Objects) { $Result += Get-Metric -InputObject $Object -Keys $Keys; }
+         $Result
       }
       # Count selected objects
       'Count' { 
          Write-Verbose "$(Get-Date) Counting objects";  
-         # if result not null, False or 0 - return .Count
-         @($Objects).Count;
+         $Count = 0;
+         # ++ must be faster that .Count, due don't enumerate object list
+         ForEach ($Object in $Objects) { $Count++; }
+         $Count;
       }
       'Last' {
          Write-Verbose "$(Get-Date) Take last value";  
-         Get-Metric -InputObject $Objects -Keys $Keys;
+         Get-Metric -InputObject (Select-Object -InputObject $Objects -Last 1) -Keys $Keys;
       }
       'Avg' { 
          Write-Verbose "$(Get-Date) Calculate average of objects metrics";  
-         $Result = 0;
+         $Result = $Count = 0;
          ForEach ($Object in $Objects) {
             $Result += Get-Metric -InputObject $Object -Keys $Keys;
+            $Count++;
          }
-         $Result / @($Objects).Count;
+         if (0 -lt $Count) { $Result / $Count } Else { 0 };
       }
       'Max' { 
          Write-Verbose "$(Get-Date) Find max value of objects metrics";  
-         $Result = 0;
-         ForEach ($Object in $Objects) {
-            $NextValue = Get-Metric -InputObject $Object -Keys $Keys;
-            If ($Result -Lt $NextValue) { $Result = $NextValue; } 
+         If ($Objects) {
+            $Result = Get-Metric -InputObject $Objects[0] -Keys $Keys;
+            ForEach ($Object in $Objects) {
+               $NextValue = Get-Metric -InputObject $Object -Keys $Keys;
+               If ($Result -Lt $NextValue) { $Result = $NextValue; } 
+            }
+            $Result;
+         } Else {
+            Exit-WithMessage -Message "No objects in collection" -ErrorCode $ErrorCode;
          }
-         $Result;
       }
       'Min' { 
          Write-Verbose "$(Get-Date) Find min value of objects metrics";  
-         $FirstItem = $True;
-         ForEach ($Object in $Objects) {
-            $NextValue = Get-Metric -InputObject $Object -Keys $Keys;
-            If ($FirstItem -OR $Result -Gt $NextValue) { $Result = $NextValue; } 
-            $FirstItem = $False;
+         # Init Result with firts object's  metric value
+         If ($Objects) {
+            $Result = Get-Metric -InputObject $Objects[0] -Keys $Keys;
+            ForEach ($Object in $Objects) {
+               $NextValue = Get-Metric -InputObject $Object -Keys $Keys;
+               If ($Result -Gt $NextValue) { $Result = $NextValue; } 
+            }
+            $Result;
+         } Else {
+            Exit-WithMessage -Message "No objects in collection" -ErrorCode $ErrorCode;
          }
-         $Result;
+
       }
    }  
 );
+
+Write-Verbose "$(Get-Date) Disconnecting from StarWind Server";
+$SWServer.Disconnect();
 
 # Convert string to UTF-8 if need (For Zabbix LLD-JSON with Cyrillic chars for example)
 if ($consoleCP) { 
