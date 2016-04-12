@@ -1,14 +1,14 @@
-## StarWind SAN Server Miner 
-This is a little Powershell script that fetch metric's values from StarWind SAN Server.
+## StarWind Virtual SAN Miner 
+This is a little Powershell script that fetch metric's values from StarWind Virtual SAN.
 
 Actual release 1.0.0
 
 Tested on:
-- Windows Server 2012 R2, StarWind 8, PowerShell 4
+- Windows Server 2012 R2, StarWind Virtual SAN 8, PowerShell 4
 
 
 Support objects:
-- _Server_ - Starwind SAN Server info;
+- _Server_ - Starwind Virtual SAN Server info;
 - _Target_ - Starwind iSCSI target;
 - _Device_ - Starwind Device.
 - _ActiveInterface_ - network interface of iSCSI portal.
