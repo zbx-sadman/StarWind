@@ -1,16 +1,16 @@
 <#                                          
     .SYNOPSIS  
-        Return Starwind SAN Server's metrics value, calculate its, make LLD-JSON for Zabbix
+        Return Starwind Virtual SAN's metrics value, calculate its, make LLD-JSON for Zabbix
 
     .DESCRIPTION
-        Return Starwind SAN Server's metrics value, calculate its, make LLD-JSON for Zabbix
+        Return Starwind Virtual SAN's metrics value, calculate its, make LLD-JSON for Zabbix
 
     .NOTES  
         Version: 1.0.0
-        Name: Starwind SAN Server Miner
+        Name: Starwind Virtual SAN Miner
         Author: zbx.sadman@gmail.com
         DateCreated: 12APR2016
-        Testing environment: Windows Server 2012 R2, StarWind 8, PowerShell 4
+        Testing environment: Windows Server 2012 R2, Starwind Virtual SAN 8, PowerShell 4
 
     .LINK  
         https://github.com/zbx-sadman
